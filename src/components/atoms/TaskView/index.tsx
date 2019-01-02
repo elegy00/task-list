@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 const Div = styled.div`color: darkblue`;
 
-class Task extends React.Component {
+class TaskView extends React.Component {
     render() {
         return (
             <Div className="task">
@@ -15,4 +15,4 @@ class Task extends React.Component {
     }
 }
 
-export default Task;
+export default TaskView;

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Task from '../../atoms/task';
+import TaskView from '../../atoms/TaskView';
 
 
 class TaskList extends React.Component {
@@ -10,8 +10,8 @@ class TaskList extends React.Component {
     render() {
         return (
             <div className="task-list">
-                <Task></Task>
-                <Task></Task>
+                <TaskView></TaskView>
+                <TaskView></TaskView>
             </div>
         );
     }
