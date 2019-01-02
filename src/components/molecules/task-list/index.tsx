@@ -8,7 +8,9 @@ import styled from 'styled-components';
 
 
 const ListDiv = styled.div`
-    margin: 12px 12px`;
+    margin: 12px 12px;
+    padding: 8px;
+    border: 1px solid darkgrey`;
 
 
 class TaskList extends React.Component<{tasks: Task[]}, { }> {
