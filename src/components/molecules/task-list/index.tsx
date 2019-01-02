@@ -4,6 +4,11 @@ import ReactDOM from 'react-dom';
 import Task from '../../../model/types'
 
 import TaskView from '../../atoms/TaskView';
+import styled from 'styled-components';
+
+
+const ListDiv = styled.div`
+    margin: 12px 12px`;
 
 
 class TaskList extends React.Component<{tasks: Task[]}, { }> {
@@ -14,9 +19,9 @@ class TaskList extends React.Component<{tasks: Task[]}, { }> {
         const tasks = this.props.tasks.map((t) => <TaskView task={t}></TaskView>)
 
         return (
-            <div className="task-list">
+            <ListDiv className="task-list">
                 {tasks}
-            </div>
+            </ListDiv>
         );
     }
 }

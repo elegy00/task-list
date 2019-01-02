@@ -24,6 +24,16 @@ class Dashboard extends React.Component<{}, { tasks: Task[][] }> {
             }, {
                 name: 'test theee',
                 position: 3
+            }],
+            [{
+                name: 'garten work',
+                position: 1
+            }, {
+                name: 'garten two',
+                position: 2
+            }, {
+                name: 'garten theee',
+                position: 3
             }]]
         };
     }
@@ -31,9 +41,9 @@ class Dashboard extends React.Component<{}, { tasks: Task[][] }> {
     render() {
         const tasklists = this.state.tasks.map((t) => <TaskList tasks={t}></TaskList>)
         return (
-            <div className="dashboard">
+            <DashboardDiv className="dashboard">
                 {tasklists}
-            </div>
+            </DashboardDiv>
         );
     }
 }
