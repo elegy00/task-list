@@ -7,7 +7,7 @@ import TaskList from '../../molecules/task-list';
 class Dashboard extends React.Component {
     render() {
         return (
-            <div class="dashboard">
+            <div className="dashboard">
                 <TaskList></TaskList>
                 <TaskList></TaskList>
                 <TaskList></TaskList>
