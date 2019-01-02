@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import Task from '../../../model/types'
+import TaskAdder from '../../molecules/TaskAdder'
 
 import TaskView from '../../atoms/TaskView';
 import styled from 'styled-components';
@@ -16,12 +17,18 @@ const ListDiv = styled.div`
 class TaskList extends React.Component<{tasks: Task[]}, { }> {
 
 
-    render() {
+    handleTaskAdded(task: Task) {
+        console.log(task);
+    }
 
+
+    render() {
         const tasks = this.props.tasks.map((t) => <TaskView task={t}></TaskView>)
 
         return (
+            
             <ListDiv className="task-list">
+                <TaskAdder onTaskAdded={this.handleTaskAdded}></TaskAdder>
                 {tasks}
             </ListDiv>
         );

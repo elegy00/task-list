@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import TaskList from '../../molecules/task-list';
+import TaskList from '../../organism/task-list';
 import Task from '../../../model/types'
 
 
