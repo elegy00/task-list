@@ -1,17 +1,24 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import styled from 'styled-components';
 
 import TaskList from '../../molecules/task-list';
 
 
+
+
+const DashboardDiv = styled.div`
+    display: flex;
+    flex-direction: row;
+    margin: 12px 12px`;
+
 class Dashboard extends React.Component {
     render() {
         return (
-            <div className="dashboard">
+            <DashboardDiv className="dashboard">
                 <TaskList></TaskList>
                 <TaskList></TaskList>
                 <TaskList></TaskList>
-            </div>
+            </DashboardDiv>
         );
     }
 }
