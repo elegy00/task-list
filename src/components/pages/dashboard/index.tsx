@@ -18,31 +18,37 @@ class Dashboard extends React.Component<{}, { taskLists: TaskList[] }> {
             taskLists: [
                 {
                     name: 'test',
-                    tasks: [
-                        { name: 'item one', position: 1 },
-                        { name: 'item two', position: 2 },
-                        { name: 'item two', position: 3 },]
+                    tasks: []                        
                 },
                 {
                     name: 'urgent',
-                    tasks: [
-                        { name: 'item one', position: 1 },
-                        { name: 'item two', position: 2 },
-                        { name: 'item two', position: 3 },]
+                    tasks: []
                 },
                 {
                     name: 'lookout',
-                    tasks: [
-                        { name: 'item one', position: 1 },
-                        { name: 'item two', position: 2 },
-                        { name: 'item two', position: 3 },]
+                    tasks: []
                 }
             ]
         };
     }
 
+
+    handleTaskAdded(task: Task, taskList: TaskList) {
+        let index = this.state.taskLists.findIndex((tl) => tl == taskList);
+        let newList = {...taskList, tasks: [...taskList.tasks, task]}
+        let newTasksLists = this.state.taskLists.slice();
+        newTasksLists[index] = newList;
+        this.setState({taskLists: newTasksLists});
+    }
+
+
     render() {
-        const tasklists = this.state.taskLists.map((t) => <TaskListView tasklist={t}></TaskListView>)
+        const tasklists = this.state.taskLists.map((t) =>
+            <TaskListView
+                tasklist={t}
+                onTaskAdded={(ta) => this.handleTaskAdded(ta, t)}>
+            </TaskListView>)
+
         return (
             <DashboardDiv className="dashboard">
                 {tasklists}

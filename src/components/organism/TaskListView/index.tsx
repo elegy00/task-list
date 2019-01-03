@@ -13,11 +13,14 @@ const ListDiv = styled.div`
     border: 1px solid darkgrey`;
 
 
-class TaskListView extends React.Component<{ tasklist: TaskList }, {}> {
+class TaskListView extends React.Component<{ tasklist: TaskList, onTaskAdded: (task: Task) => void }, {}> {
 
+    constructor(props: any) {
+        super(props);
+    }
 
     handleTaskAdded(task: Task) {
-        console.log(task);
+        this.props.onTaskAdded(task);
     }
 
 
@@ -25,10 +28,9 @@ class TaskListView extends React.Component<{ tasklist: TaskList }, {}> {
         const tasks = this.props.tasklist.tasks.map((t) => <TaskView task={t}></TaskView>)
 
         return (
-
             <ListDiv className="task-list">
-            <h2>{this.props.tasklist.name}</h2>
-                <TaskAdder onTaskAdded={this.handleTaskAdded}></TaskAdder>
+                <h2>{this.props.tasklist.name}</h2>
+                <TaskAdder onTaskAdded={(e) => this.handleTaskAdded(e)}></TaskAdder>
                 {tasks}
             </ListDiv>
         );
