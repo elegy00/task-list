@@ -1,5 +1,11 @@
 
-export default interface Task {
+export interface Task {
     name: String,
-    position: number  
-  }
+    position: number
+}
+
+
+export interface TaskList {
+    name: String,
+    tasks: Task[]
+}

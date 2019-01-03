@@ -1,9 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
-import Task from '../../../model/types'
+import {Task} from '../../../model/types'
 
-import TaskView from '../../atoms/TaskView';
 import styled from 'styled-components';
 
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import TaskList from '../../organism/task-list';
-import Task from '../../../model/types'
+import TaskListView from '../../organism/TaskListView';
+import { Task, TaskList } from '../../../model/types'
 
 
 const DashboardDiv = styled.div`
@@ -10,36 +10,39 @@ const DashboardDiv = styled.div`
     flex-direction: row;
     margin: 12px 12px`;
 
-class Dashboard extends React.Component<{}, { tasks: Task[][] }> {
+class Dashboard extends React.Component<{}, { taskLists: TaskList[] }> {
 
     constructor(props: any) {
         super(props);
         this.state = {
-            tasks: [[{
-                name: 'test work',
-                position: 1
-            }, {
-                name: 'test two',
-                position: 2
-            }, {
-                name: 'test theee',
-                position: 3
-            }],
-            [{
-                name: 'garten work',
-                position: 1
-            }, {
-                name: 'garten two',
-                position: 2
-            }, {
-                name: 'garten theee',
-                position: 3
-            }]]
+            taskLists: [
+                {
+                    name: 'test',
+                    tasks: [
+                        { name: 'item one', position: 1 },
+                        { name: 'item two', position: 2 },
+                        { name: 'item two', position: 3 },]
+                },
+                {
+                    name: 'urgent',
+                    tasks: [
+                        { name: 'item one', position: 1 },
+                        { name: 'item two', position: 2 },
+                        { name: 'item two', position: 3 },]
+                },
+                {
+                    name: 'lookout',
+                    tasks: [
+                        { name: 'item one', position: 1 },
+                        { name: 'item two', position: 2 },
+                        { name: 'item two', position: 3 },]
+                }
+            ]
         };
     }
 
     render() {
-        const tasklists = this.state.tasks.map((t) => <TaskList tasks={t}></TaskList>)
+        const tasklists = this.state.taskLists.map((t) => <TaskListView tasklist={t}></TaskListView>)
         return (
             <DashboardDiv className="dashboard">
                 {tasklists}
