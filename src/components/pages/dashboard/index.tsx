@@ -9,8 +9,7 @@ import { RouteComponentProps } from '@reach/router';
 
 const DashboardDiv = styled.div`
     display: flex;
-    flex-direction: row;
-    margin: 12px 12px`;
+    flex-direction: row;`;
 
 class DashboardPage extends React.Component<RouteComponentProps, { taskLists: TaskList[] }> {
 
