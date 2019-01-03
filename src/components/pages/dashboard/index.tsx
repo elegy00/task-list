@@ -4,13 +4,15 @@ import styled from 'styled-components';
 import TaskListView from '../../organism/TaskListView';
 import { Task, TaskList } from '../../../model/types'
 
+import { RouteComponentProps } from '@reach/router';
+
 
 const DashboardDiv = styled.div`
     display: flex;
     flex-direction: row;
     margin: 12px 12px`;
 
-class Dashboard extends React.Component<{}, { taskLists: TaskList[] }> {
+class DashboardPage extends React.Component<RouteComponentProps, { taskLists: TaskList[] }> {
 
     constructor(props: any) {
         super(props);
@@ -57,4 +59,5 @@ class Dashboard extends React.Component<{}, { taskLists: TaskList[] }> {
     }
 }
 
-export default Dashboard;
+//export default DashboardPage;
+export default React.memo(DashboardPage);
