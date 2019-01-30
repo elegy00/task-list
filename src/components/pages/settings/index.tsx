@@ -1,21 +1,20 @@
-import React from 'react';
+import React from "react";
 
-import styled from 'styled-components';
+import styled from "styled-components";
 
-import { RouteComponentProps } from '@reach/router';
-import { gql } from 'apollo-boost';
+import { RouteComponentProps } from "@reach/router";
+import { gql } from "apollo-boost";
 import { Mutation } from "react-apollo";
-import CurrentLists from './CurrentLists';
-import TextAdder from '../../molecules/TextAdder';
+import CurrentLists, { ListsQuery } from "./CurrentLists";
+import TextAdder from "../../molecules/TextAdder";
 
-
-const Div = styled.div`color: darkblue`;
+const Div = styled.div`
+  color: darkblue;
+`;
 
 const AddListMutation = gql`
-    mutation AddListMutation($name: String!) {
-    createList (
-      input: { list: { name: $name } }
-    ) {
+  mutation AddListMutation($name: String!) {
+    createList(input: { list: { name: $name } }) {
       list {
         id
         name
@@ -24,26 +23,45 @@ const AddListMutation = gql`
       }
     }
   }
-  
 `;
 
+// const mutationAdded =
+
 class SettingsPage extends React.Component<RouteComponentProps, {}> {
-    render() {
-        return (
-            <div>
-                <h1>Settings</h1>
-                <p>Many grand settings can be worked on here</p>
-                <CurrentLists></CurrentLists>
-                <Mutation mutation={AddListMutation}>
-                {(addListMutation) => {
-                    return <TextAdder onTaskAdded={(e) => addListMutation({ variables: { name: e.name } })}></TextAdder>
-                    
-                }}
-                
-                </Mutation>
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div>
+        <h1>Settings</h1>
+        <p>Many grand settings can be worked on here</p>
+        <CurrentLists />
+        <Mutation
+          mutation={AddListMutation}
+          update={(cache: any, { data: { createList } }) => {
+            const { allLists } = cache.readQuery({ query: ListsQuery });
+            console.log(allLists);
+            console.log(createList);
+            allLists.nodes = [...allLists.nodes, createList.list]
+
+            cache.writeQuery({
+              query: ListsQuery,
+              data: { allLists: {...allLists}
+              }  
+            });
+          }}
+        >
+          {addListMutation => {
+            return (
+              <TextAdder
+                onTaskAdded={e =>
+                  addListMutation({ variables: { name: e.name } })
+                }
+              />
+            );
+          }}
+        </Mutation>
+      </div>
+    );
+  }
 }
 
 export default SettingsPage;

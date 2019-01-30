@@ -9,7 +9,7 @@ import { Query } from "react-apollo";
 
 const Div = styled.div`color: darkblue`;
 
-const ListsQuery = gql`
+export const ListsQuery = gql`
 { allLists {
     nodes {
       id
