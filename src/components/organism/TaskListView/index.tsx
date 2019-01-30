@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Task, TaskList } from '../../../model/types'
-import TaskAdder from '../../molecules/TaskAdder'
+import TextAdder from '../../molecules/TextAdder'
 
 import TaskView from '../../atoms/TaskView';
 import styled from 'styled-components';
@@ -30,7 +30,7 @@ class TaskListView extends React.Component<{ tasklist: TaskList, onTaskAdded: (t
         return (
             <ListDiv className="task-list">
                 <h2>{this.props.tasklist.name}</h2>
-                <TaskAdder onTaskAdded={(e) => this.handleTaskAdded(e)}></TaskAdder>
+                <TextAdder onTaskAdded={(e) => this.handleTaskAdded(e)}></TextAdder>
                 {tasks}
             </ListDiv>
         );

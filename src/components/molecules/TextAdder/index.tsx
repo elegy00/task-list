@@ -5,13 +5,13 @@ import { Task } from '../../../model/types'
 import styled from 'styled-components';
 
 
-const AddTask = styled.div`
+const AddText = styled.div`
     margin: 12px 12px;
     padding: 8px;
     border: 1px solid darkgrey`;
 
 
-class TaskAdder extends React.Component<{ onTaskAdded: (task: Task) => void }, { text: String }> {
+class TextAdder extends React.Component<{ onTaskAdded: (task: Task) => void }, { text: String }> {
 
     constructor(props: any) {
         super(props);
@@ -36,12 +36,12 @@ class TaskAdder extends React.Component<{ onTaskAdded: (task: Task) => void }, {
     render() {
 
         return (
-            <AddTask>
+            <AddText>
                 <input type="text" value={this.state.text as string} onChange={(evt) => this.updateText(evt)} />
                 <button onClick={(e) => this.handleAddClicked()}>Add</button>
-            </AddTask>
+            </AddText>
         );
     }
 }
 
-export default TaskAdder;
+export default TextAdder;

@@ -1,21 +1,31 @@
-import React, { Component } from 'react';
-import DashboardPage from './components/pages/dashboard';
-import SettingsPage from './components/pages/settings';
-import Navigation from './components/organism/Navigation';
+import React, { Component } from "react";
+import DashboardPage from "./components/pages/dashboard";
+import SettingsPage from "./components/pages/settings";
+import Navigation from "./components/organism/Navigation";
 
-import { Router } from '@reach/router';
+import { ApolloProvider } from "react-apollo";
 
-import './App.css';
+import { Router } from "@reach/router";
+
+import "./App.css";
+
+import ApolloClient from "apollo-boost";
+
+const client = new ApolloClient({
+  uri: "/graphql"
+});
 
 class App extends Component {
   render() {
     return (
       <div>
-        <Navigation></Navigation>
-        <Router>
-          <DashboardPage path="/"></DashboardPage>
-          <SettingsPage path="settings"></SettingsPage>
-        </Router>
+        <ApolloProvider client={client}>
+          <Navigation />
+          <Router>
+            <DashboardPage path="/" />
+            <SettingsPage path="settings" />
+          </Router>
+        </ApolloProvider>
       </div>
     );
   }
