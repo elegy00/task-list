@@ -38,8 +38,6 @@ class SettingsPage extends React.Component<RouteComponentProps, {}> {
           mutation={AddListMutation}
           update={(cache: any, { data: { createList } }) => {
             const { allLists } = cache.readQuery({ query: ListsQuery });
-            console.log(allLists);
-            console.log(createList);
             allLists.nodes = [...allLists.nodes, createList.list]
 
             cache.writeQuery({
